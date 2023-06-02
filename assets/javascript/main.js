@@ -1,8 +1,16 @@
 //Starting Quiz
-let startButton = document.querySelector(".start-button")
+let startButton = document.querySelector(".startButton")
 let timer = document.querySelector(".timer")
 let secondsLeft = 75;
-let startScreen = document.querySelector(".start-screen");
+let startScreen = document.querySelector(".section");
+
+//Quiz Questions
+let questionSection = document.querySelector(".questionSection");
+let questionScreen = document.querySelector(".questionScreen");
+let questions = document.querySelector(".question");
+let choices = document.querySelector(".choices");
+let answer = document.querySelector(".answers");
+let questionIndex = 0;
 
 let questionsArray = [
     [{
@@ -37,7 +45,6 @@ let questionsArray = [
     },
     ]
 ]
-
 //timer
 function setTimer() {
     let timerInterval = setInterval(function () {
@@ -58,19 +65,35 @@ function setTimer() {
 //Hide start screen, shows questions, starts timer
 function startQuiz() {
     startScreen.setAttribute('class', 'hide');
+    questionSection.removeAttribute('class', 'hide');
 
     setTimer()
     runQuestions()
 }
 
 //questions
-function(runQuestions)
+function runQuestions() {
+    questions.textContent = questionsArray[questionIndex].title;
+    answer.textContent = ""
+        ;
+    for (let i = 0; i < questionsArray[questionIndex].choices.length; i++) {
+        let choiceBtn = document.createElement('button');
+        choiceBtn.textContent = questionsArray[questionIndex].choices[i];
+        choiceBtn.id = (i + 1).toString()
+        choiceBtn.addEventListener("click", checkAnswers);
+        answer.append(choiceBtn)
+    }
+}
 
-//answers
-function(checkAnswers)
+// //answers
+// function(checkAnswers)
 
-//endgame
-function(endGame) 
+
+// //endgame
+// function(endGame)
 
 //hide questions and show final score
 
+// Starts Quiz
+startButton.addEventListener("click", startQuiz);
+console.log("Quiz started");

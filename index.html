@@ -9,10 +9,12 @@
 </head>
 
 <body>
+    <!-- highscores and timer -->
     <section class="navbar" role="highscores">
         <a href='#' onclink='viewHighScores()' class="navbar-item highscores">View High Scores</a>
         <p class="navbar-item timer">Time: 0</p>
     </section>
+    <!-- First screen -->
     <section class="section">
         <div class="column is-half is-offset-one-quarter is-family-code">
             <h1 class="title is-size-1 py-4 has-text-danger">
@@ -22,9 +24,18 @@
             <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
                 answers will penalize your score/time by ten seconds!</p>
             </p>
-            <button class="button is-danger my-4">Start Quiz</button>
+            <button class="startButton is-danger my-4">Start Quiz</button>
         </div>
     </section>
+    <!-- questions -->
+    <section class="hide questionSection">
+        <div class="questionScreen">
+            <h2 class="question">Question</h2>
+            <div class="choices"></div>
+            <div class="answers"></div>
+        </div>
+    </section>
+
     <script src="./assets/javascript/main.js"> </script>
 </body>
 

@@ -6,34 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JavaScript (Loops) Quiz</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
 </head>
 
 <body>
     <!-- highscores and timer -->
     <section class="navbar" role="highscores">
-        <a href='#' onclink='viewHighScores()' class="navbar-item highscores">View High Scores</a>
-        <p class="navbar-item timer">Time: 0</p>
+        <a href='#' onclink='highScoreScreen' class="navbar-item highscores is-size-4 is-family-code viewHighScoresBtn">View High
+            Scores</a>
+        <p class="navbar-item is-family-code timer is-size-4">Time: 0</p>
     </section>
+
     <!-- First screen -->
-    <section class="section">
-        <div class="column is-half is-offset-one-quarter is-family-code">
-            <h1 class="title is-size-1 py-4 has-text-danger">
+    <section class="startScreen has-text-centered">
+        <div class="column is-half is-offset-one-quarter">
+            <h1 class="title is-size-1 py-4 has-text-danger is-family-code">
                 Coding Quiz Challenge
             </h1>
-            <p class="subtitle">
-            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
-                answers will penalize your score/time by ten seconds!</p>
-            </p>
-            <button class="startButton is-danger my-4">Start Quiz</button>
+            <h2 class="title is-3">Try to answer the following code-related questions within the time limit.
+            </h2>
+            <h2 class="title is-3">Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            </h2>
+            <button class="button is-danger startButton">Start Quiz</button>
         </div>
     </section>
+
     <!-- questions -->
-    <section class="hide questionSection">
-        <div class="questionScreen">
-            <h2 class="question">Question</h2>
+    <section class="is-11 is-family-code hide questionSection">
+        <div class="questionScreen title is-size-1 py-4 has-text-danger">
+            <h2 class="question text is-family-code">Question</h2>
             <div class="choices"></div>
             <div class="answers"></div>
         </div>
+    </section>
+    <!-- final score screen -->
+    <section class="finalScoreScreen hide">
+        <div>
+            <h2 class="text is-family-code title is-2 has-text-centered"> Congradulations! You completed the
+                JavaScript Quiz!</h2>
+            <p class="finalScore"></p>
+            <input type="text" class="initials input is-danger is-medium" placeholder="Great Job!">
+            <div id="submitText" class="is-family-code title is-4"></div>
+        </div>
+        <button class="submitBtn button is-danger ">Submit</button>
+        <!-- <button class="viewHighScoresBtn button is-danger ">View HighScores</button> -->
+
+    </section>
+
+    <!-- HighScores screen -->
+    <section class="highScoreScreen hide">
+        <h2 class=" is-size-2 is-family-code has-text-centered">High Scores</h2>
+        <p class="highScoreOl is-size-3 is-family-code"></p>
+        <button class="backBtn button is-danger ">Try Again!</button>
+        <button class="clearScoresBtn button is-danger ">Clear all high scores</button>
     </section>
 
     <script src="./assets/javascript/main.js"> </script>

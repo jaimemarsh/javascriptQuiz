@@ -137,23 +137,18 @@ startButton.addEventListener("click", startQuiz);
 console.log("Quiz started");
 
 
-// submit button text
+// object for high scores to store to local storage, and then be shown
 submitBtn.addEventListener("click", function () {
     document.getElementById("submitText").innerHTML = "Nice job! Click 'View High Score' to see your progress";
-});
 
-//view highscores, adding them to local storage
-function showingLocalStorage() {
     // Get user's input
     let initialsInput = document.querySelector(".initials").value;
-    showingLocalStorage();
 
     // Create the highScore object
     let highScore = {
         initials: initialsInput,
         timerCount: secondsLeft,
     }
-
     // Retrieve existing high scores from local storage
     let storedHighScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
@@ -172,9 +167,8 @@ function showingLocalStorage() {
         highScoreElement.textContent = highScore.initials + " " + highScore.timerCount;
         highScoreList.appendChild(highScoreElement);
     });
-}
-showingLocalStorage()
 
+})
 
 // clear high scores
 clearScoresBtn.addEventListener("click", function () {
@@ -184,7 +178,6 @@ clearScoresBtn.addEventListener("click", function () {
 
 // show high scores
 viewHighScoresBtn.addEventListener("click", function () {
-    showingLocalStorage()
     highScoreScreen.removeAttribute('class', 'hide');
     startScreen.setAttribute('class', 'hide');
     finalScoreScreen.setAttribute('class', 'hide');

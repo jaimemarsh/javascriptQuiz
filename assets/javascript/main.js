@@ -10,6 +10,7 @@ let questionScreen = document.querySelector(".questionScreen");
 let questions = document.querySelector(".question");
 let choices = document.querySelector(".choices");
 let answer = document.querySelector(".answers");
+let correctOrIncorrect = document.querySelector(".correctOrIncorrect");
 let questionIndex = 0;
 
 //Final
@@ -102,10 +103,9 @@ function runQuestions() {
 function checkAnswers(event) {
     let userAnswer = event.target.id;
     if (userAnswer === questionsArray[questionIndex].answer) {
-        answer.textContent = "Correct";
-        secondsLeft += 10;
+        correctOrIncorrect.textContent = "Correct";
     } else {
-        answer.textContent = "Incorrect";
+        correctOrIncorrect.textContent = "Incorrect";
         secondsLeft -= 10;
     }
     questionIndex++;
@@ -128,8 +128,9 @@ function endGame() {
 
 //backBtn
 backBtn.addEventListener("click", function () {
-    startScreen.removeAttribute('class', 'hide')
-    highScoreScreen.setAttribute('class', 'hide')
+    // startScreen.removeAttribute('class', 'hide')
+    // highScoreScreen.setAttribute('class', 'hide')
+    location.reload();
 })
 
 // Starts Quiz
@@ -138,7 +139,9 @@ console.log("Quiz started");
 
 
 // object for high scores to store to local storage, and then be shown
-submitBtn.addEventListener("click", function () {
+submitBtn.addEventListener("click", getLocalStorage);
+
+function getLocalStorage() {
     document.getElementById("submitText").innerHTML = "Nice job! Click 'View High Score' to see your progress";
 
     // Get user's input
@@ -167,8 +170,7 @@ submitBtn.addEventListener("click", function () {
         highScoreElement.textContent = highScore.initials + " " + highScore.timerCount;
         highScoreList.appendChild(highScoreElement);
     });
-
-})
+}
 
 // clear high scores
 clearScoresBtn.addEventListener("click", function () {
@@ -178,8 +180,8 @@ clearScoresBtn.addEventListener("click", function () {
 
 // show high scores
 viewHighScoresBtn.addEventListener("click", function () {
+    getLocalStorage()
     highScoreScreen.removeAttribute('class', 'hide');
     startScreen.setAttribute('class', 'hide');
     finalScoreScreen.setAttribute('class', 'hide');
-
 })
